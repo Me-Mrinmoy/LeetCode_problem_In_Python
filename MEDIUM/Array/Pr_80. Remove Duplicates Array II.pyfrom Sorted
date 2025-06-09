@@ -1,0 +1,29 @@
+class Solution:
+    def removeDuplicates(self, nums):
+        if not nums:
+            return 0
+        
+        # Initialize a pointer for the position of the next unique element
+        k = 0
+        
+        # Iterate through the sorted array
+        for i in range(len(nums)):
+            # Check if we can add the current number to the result
+            if k < 2 or nums[i] != nums[k - 2]:
+                nums[k] = nums[i]
+                k += 1
+        
+        return k
+
+# Example usage:
+solution = Solution()
+
+# Example 1
+nums1 = [1, 1, 1, 2, 2, 3]
+k1 = solution.removeDuplicates(nums1)
+print(k1, nums1[:k1])  # Output: 5, [1, 1, 2, 2, 3]
+
+# Example 2
+nums2 = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+k2 = solution.removeDuplicates(nums2)
+print(k2, nums2[:k2])  # Output: 7, [0, 0, 1, 1, 2, 3, 3]

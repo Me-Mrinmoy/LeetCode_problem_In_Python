@@ -29,6 +29,16 @@ If you have questions, feedback, or want to collaborate, feel free to reach out:
 
 ---
 
+## 💬 Support & Feedback
+
+If you find this repository helpful:
+
+- 🌟 **Star this repo**
+- 🔄 **Fork and contribute**
+- 🐞 **Report issues or bugs**
+
+---
+
 ## 📂 Folder Structure
 
 ```bash

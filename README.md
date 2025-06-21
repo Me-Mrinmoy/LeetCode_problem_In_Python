@@ -26,6 +26,7 @@ If you have questions, feedback, or want to collaborate, feel free to reach out:
 - 🐦 Twitter: [@MrinmoySamanta](https://twitter.com/MrinmoySamanta)  
 - 💼 LinkedIn: [Mrinmoy Samanta](https://www.linkedin.com/in/mrinmoysamanta)  
 - 💻 GitHub: [Me-Mrinmoy](https://github.com/Me-Mrinmoy)
+- 📧 **Email** – mrinmoysamantamrinmoysamanta@gmail.com
 
 ---
 

@@ -30,6 +30,15 @@ If you have questions, feedback, or want to collaborate, feel free to reach out:
 
 ---
 
+## 🚀 How to Use
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/Me-Mrinmoy/Leetcode_problem_In_Python.git
+   cd Leetcode_problem_In_Python
+
+---
+
 ## 💬 Support & Feedback
 
 If you find this repository helpful:

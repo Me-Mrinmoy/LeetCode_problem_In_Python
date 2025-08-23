@@ -1,0 +1,20 @@
+class Solution:
+    def constructFromPrePost(self, preorder, postorder):
+        if not preorder:
+            return None
+
+        root = TreeNode(preorder[0])   # use LeetCode's built-in TreeNode
+        if len(preorder) == 1:
+            return root
+
+        # Next node in preorder is left child root
+        left_root_val = preorder[1]
+        # Find left subtree size in postorder
+        left_size = postorder.index(left_root_val) + 1
+
+        # Build left and right subtrees recursively
+        root.left = self.constructFromPrePost(preorder[1:1+left_size],
+                                              postorder[:left_size])
+        root.right = self.constructFromPrePost(preorder[1+left_size:],
+                                               postorder[left_size:-1])
+        return root

@@ -1,38 +1,36 @@
 class Solution:
     def validUtf8(self, data):
-        def count_leading_ones(byte):
-            count = 0
-            for i in range(7, -1, -1):
-                if (byte >> i) & 1:
+        # Number of bytes remaining to complete the current UTF-8 char
+        remaining_bytes = 0
+
+        for byte in data:
+            # Consider only the last 8 bits
+            byte = byte & 0xFF  
+
+            if remaining_bytes == 0:
+                # Count number of leading 1s
+                mask = 0b10000000
+                count = 0
+                while mask & byte:
                     count += 1
-                else:
-                    break
-            return count
+                    mask >>= 1
 
-        i = 0
-        n = len(data)
+                if count == 0:
+                    continue  # 1-byte character
+                if count == 1 or count > 4:
+                    return False  # Invalid pattern
 
-        while i < n:
-            first_byte = data[i]
-            num_bytes = count_leading_ones(first_byte)
-
-            # Invalid if the first byte has more than 4 leading 1's or is 1 (i.e., 10xxxxxx)
-            if num_bytes == 1 or num_bytes > 4:
-                return False
-
-            # If not enough bytes left
-            if i + num_bytes > n:
-                return False
-
-            # Check the next num_bytes - 1 for starting with 10xxxxxx
-            for j in range(1, num_bytes):
-                if (data[i + j] >> 6) != 0b10:
-                    return False
-
-            # If it's a 1-byte character (starts with 0xxxxxxx)
-            if num_bytes == 0:
-                i += 1
+                remaining_bytes = count - 1  # Expect continuation bytes
             else:
-                i += num_bytes
+                # Must be a continuation byte: starts with "10"
+                if not (byte & 0b10000000 and not (byte & 0b01000000)):
+                    return False
+                remaining_bytes -= 1
 
-        return True
+        return remaining_bytes == 0
+
+
+# Example usage:
+solution = Solution()
+print(solution.validUtf8([197, 130, 1]))   # True
+print(solution.validUtf8([235, 140, 4]))   # False

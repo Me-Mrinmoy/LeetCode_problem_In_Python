@@ -1,4 +1,4 @@
-#Python3 Versi
+#Python3 Versio
 class Solution:
     def shortestBeautifulSubstring(self, s: str, k: int) -> str:
         if s.count('1') < k:
